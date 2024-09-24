@@ -47,6 +47,7 @@
   * [SiliconFlow](integrations/llms/siliconflow.md)
   * [Stability AI](integrations/llms/stability-ai.md)
   * [Together AI](integrations/llms/together-ai.md)
+  * [Voyage AI](integrations/llms/voyage-ai.md)
   * [Workers AI](integrations/llms/workers-ai.md)
   * [ZhipuAI / ChatGLM / BigModel](integrations/llms/zhipu.md)
   * [Suggest a new integration!](integrations/llms/suggest-a-new-integration.md)
