@@ -258,7 +258,6 @@
     * [Get Feedback Score Distribution Data](portkey-endpoints/analytics/graphs-time-series-data/get-feedback-score-distribution-data.md)
     * [Get Weighted Feeback Data](portkey-endpoints/analytics/graphs-time-series-data/get-weighted-feeback-data.md)
     * [Get Feedback Per AI Models](portkey-endpoints/analytics/graphs-time-series-data/get-feedback-per-ai-models.md)
-    * [Page 1](portkey-endpoints/analytics/graphs-time-series-data/page-1.md)
   * [Summary](portkey-endpoints/analytics/summary/README.md)
     * [Get All Cache Data](portkey-endpoints/analytics/summary/get-all-cache-data.md)
   * [Groups - Paginated Data](portkey-endpoints/analytics/groups-paginated-data/README.md)
