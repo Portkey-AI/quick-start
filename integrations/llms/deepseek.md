@@ -52,7 +52,7 @@ from portkey_ai import Portkey
 
 portkey = Portkey(
     api_key="PORTKEY_API_KEY",  # Replace with your Portkey API key
-    virtual_key="VIRTUAL_KEY"   # Replace with your virtual key for Groq
+    virtual_key="VIRTUAL_KEY"   # Replace with your virtual key for DeepSeek
 )
 ```
 {% endtab %}
@@ -78,10 +78,170 @@ console.log(chatCompletion.choices);
 ```python
 completion = portkey.chat.completions.create(
     messages= [{ "role": 'user', "content": 'Say this is a test' }],
-    model= 'mistral-medium'
+    model= 'deepseek-chat'
 )
 
 print(completion)
+```
+{% endtab %}
+{% endtabs %}
+
+### 4. **Invoke** Multi-round Conversation with DeepSeek
+
+{% tabs %}
+{% tab title="NodeJS SDK" %}
+```javascript
+const client = new Portkey({
+    apiKey: "PORTKEY_API_KEY", // defaults to process.env["PORTKEY_API_KEY"]
+    virtualKey: "VIRTUAL_KEY" // Your DeepSeek Virtual Key
+})
+
+// Function to send chat messages and get a response
+async function sendChatMessages(messages) {
+  try {
+    const response = await axios.post(baseURL, {
+      model: 'deepseek-chat',
+      messages: messages
+    }, { headers: headers });
+    return response.data;
+  } catch (error) {
+    console.error('Error during the API request:', error.response ? error.response.data : error.message);
+    return null;
+  }
+}
+
+// Round 1
+(async () => {
+  let messages = [{ role: 'user', content: "What's the highest mountain in the world?" }];
+
+  let response = await sendChatMessages(messages);
+  if (response) {
+    messages.push(response.choices[0].message);
+    console.log(`Messages Round 1: ${JSON.stringify(messages, null, 2)}`);
+  }
+
+  // Round 2
+  messages.push({ role: 'user', content: 'What is the second?' });
+  response = await sendChatMessages(messages);
+  if (response) {
+    messages.push(response.choices[0].message);
+    console.log(`Messages Round 2: ${JSON.stringify(messages, null, 2)}`);
+  }
+})();
+```
+{% endtab %}
+
+{% tab title="Python SDK" %}
+```python
+client = Portkey(
+    api_key="PORTKEY_API_KEY",  # Replace with your Portkey API key
+    virtual_key="VIRTUAL_KEY"   # Replace with your virtual key for DeepSeek
+)
+
+# Round 1
+messages = [{"role": "user", "content": "What's the highest mountain in the world?"}]
+response = client.chat.completions.create(
+    model="deepseek-chat",
+    messages=messages
+)
+
+messages.append(response.choices[0].message)
+print(f"Messages Round 1: {messages}")
+
+# Round 2
+messages.append({"role": "user", "content": "What is the second?"})
+response = client.chat.completions.create(
+    model="deepseek-chat",
+    messages=messages
+)
+
+messages.append(response.choices[0].message)
+print(f"Messages Round 2: {messages}")
+```
+{% endtab %}
+{% endtabs %}
+
+### 5. JSON Output with DeepSeek
+
+{% tabs %}
+{% tab title="NodeJS SDK" %}
+```javascript
+const client = new Portkey({
+    apiKey: "PORTKEY_API_KEY", // defaults to process.env["PORTKEY_API_KEY"]
+    virtualKey: "VIRTUAL_KEY" // Your DeepSeek Virtual Key
+})
+
+const systemPrompt = `
+The user will provide some exam text. Please parse the "question" and "answer" and output them in JSON format.
+
+EXAMPLE INPUT:
+Which is the highest mountain in the world? Mount Everest.
+
+EXAMPLE JSON OUTPUT:
+{
+    "question": "Which is the highest mountain in the world?",
+    "answer": "Mount Everest"
+}
+`;
+
+const userPrompt = "Which is the longest river in the world? The Nile River.";
+
+const messages = [
+    { role: "system", content: systemPrompt },
+    { role: "user", content: userPrompt }
+];
+
+client.chat.completions.create({
+    model: "deepseek-chat",
+    messages: messages,
+    responseFormat: {
+        type: 'json_object'
+    }
+}).then(response => {
+    console.log(JSON.parse(response.choices[0].message.content));
+}).catch(error => {
+    console.error('Error:', error);
+});
+```
+{% endtab %}
+
+{% tab title="Python SDK" %}
+```python
+import json
+
+
+client = Portkey(
+    api_key="PORTKEY_API_KEY",  # Replace with your Portkey API key
+    virtual_key="VIRTUAL_KEY"   # Replace with your virtual key for DeepSeek
+)
+
+system_prompt = """
+The user will provide some exam text. Please parse the "question" and "answer" and output them in JSON format. 
+
+EXAMPLE INPUT: 
+Which is the highest mountain in the world? Mount Everest.
+
+EXAMPLE JSON OUTPUT:
+{
+    "question": "Which is the highest mountain in the world?",
+    "answer": "Mount Everest"
+}
+"""
+
+user_prompt = "Which is the longest river in the world? The Nile River."
+
+messages = [{"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt}]
+
+response = client.chat.completions.create(
+    model="deepseek-chat",
+    messages=messages,
+    response_format={
+        'type': 'json_object'
+    }
+)
+
+print(json.loads(response.choices[0].message.content))
 ```
 {% endtab %}
 {% endtabs %}
