@@ -26,6 +26,7 @@
   * [Fireworks](integrations/llms/fireworks.md)
   * [Deepbricks](integrations/llms/deepbricks.md)
   * [Deepinfra](integrations/llms/deepinfra.md)
+  * [Deepseek](integrations/llms/deepseek.md)
   * [Google Palm](integrations/llms/google-palm.md)
   * [Huggingface](integrations/llms/huggingface.md)
   * [Inference.net](integrations/llms/inference.net.md)
