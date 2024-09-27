@@ -124,6 +124,129 @@ main();
 {% endtab %}
 {% endtabs %}
 
+***
+
+## Document, Video, Audio Processing
+
+Vertex AI supports attaching `mp4`, `pdf`, `jpg`, `mp3`, `wav`, etc. file types to your Gemini messages.
+
+{% hint style="info" %}
+Gemini Docs:
+
+* [Document Processing](https://ai.google.dev/gemini-api/docs/document-processing?lang=python)
+* [Video & Image Processing](https://ai.google.dev/gemini-api/docs/vision?lang=python)
+* [Audio Processing](https://ai.google.dev/gemini-api/docs/audio?lang=python)
+{% endhint %}
+
+Using Portkey, here's how you can send these media files:
+
+{% tabs %}
+{% tab title="NodeJS SDK" %}
+```javascript
+const chatCompletion = await portkey.chat.completions.create({
+    messages: [
+        { role: 'system', content: 'You are a helpful assistant' },
+        { role: 'user', content: [
+            {
+                type: 'image_url',
+                image_url: {
+                    url: 'gs://cloud-samples-data/generative-ai/image/scones.jpg'
+                }
+            },
+            {
+                type: 'text',
+                text: 'Describe the image'
+            }
+        ]}
+    ],
+    model: 'gemini-1.5-pro-001',
+    max_tokens: 200
+});
+```
+{% endtab %}
+
+{% tab title="Python SDK" %}
+```python
+completion = portkey.chat.completions.create(
+    messages=[
+        {
+            "role": "system",
+            "content": "You are a helpful assistant"
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "gs://cloud-samples-data/generative-ai/image/scones.jpg"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "Describe the image"
+                }
+            ]
+        }
+    ],
+    model='gemini-1.5-pro-001',
+    max_tokens=200
+)
+
+print(completion)
+```
+{% endtab %}
+
+{% tab title="Curl" %}
+```sh
+curl --location 'https://api.portkey.ai/v1/chat/completions' \
+--header 'x-portkey-provider: vertex-ai' \
+--header 'x-portkey-vertex-region: us-central1' \
+--header 'Content-Type: application/json' \
+--header 'x-portkey-api-key: PORTKEY_API_KEY' \
+--header 'Authorization: GEMINI_API_KEY' \
+--data '{
+    "model": "gemini-1.5-pro-001",
+    "max_tokens": 200,
+    "stream": false,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant"
+        },
+        {
+            "role": "user",
+            "content": [
+                {    
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "gs://cloud-samples-data/generative-ai/image/scones.jpg"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "describe this image"
+                }
+            ]
+        }
+    ]
+}'
+```
+{% endtab %}
+{% endtabs %}
+
+This same message format also works for all other media types — just send your media file in the `url` field, like <mark style="color:green;">`"url": "gs://cloud-samples-data/video/animals.mp4"`</mark>
+
+### Sending `base64` Image
+
+Here, you can send the `base64` image data along with the `url` field too:&#x20;
+
+```json
+"url": "data:image/png;base64,UklGRkacAABXRUJQVlA4IDqcAAC....."
+```
+
+***
+
 ## Function Calling
 
 Portkey supports function calling mode on Google's Gemini Models. Explore this :arrow\_down: Cookbook for a deep dive and examples:
