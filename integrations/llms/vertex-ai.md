@@ -235,7 +235,11 @@ curl --location 'https://api.portkey.ai/v1/chat/completions' \
 {% endtab %}
 {% endtabs %}
 
-This same message format also works for all other media types — just send your media file in the `url` field, like <mark style="color:green;">`"url": "gs://cloud-samples-data/video/animals.mp4"`</mark>
+This same message format also works for all other media types — just send your media file in the `url` field, like <mark style="color:green;">`"url": "gs://cloud-samples-data/video/animals.mp4"`</mark>  for google cloud urls and <mark style="color:green;">`"url":"https://download.samplelib.com/mp3/sample-3s.mp3"`</mark> for public urls
+
+{% hint style="info" %}
+Your URL should have the file extension, this is used for inferring MIME\_TYPE which is a required parameter for prompting Gemini models with files
+{% endhint %}
 
 ### Sending `base64` Image
 
