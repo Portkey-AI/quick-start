@@ -29,6 +29,7 @@
 * Together AI
 * Cloudflare Workers AI
 * Zhipu AI
+* DeepSeek
 
 </details>
 
