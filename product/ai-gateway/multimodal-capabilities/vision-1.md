@@ -144,4 +144,4 @@ On completion, the request will get logged in the logs UI where you can see tras
 
 The following providers are supported for speech-to-text with more providers getting added soon. Please raise a [request](../../../integrations/llms/suggest-a-new-integration.md) or a [PR](https://github.com/Portkey-AI/gateway/pulls) to add model or provider to the AI gateway.
 
-<table><thead><tr><th width="192.33333333333331">Provider</th><th>Models</th><th>Functions</th></tr></thead><tbody><tr><td><a href="../../../integrations/llms/openai/">OpenAI</a></td><td><code>whisper-1</code></td><td>Transcription<br>Translation</td></tr></tbody></table>
+<table><thead><tr><th width="192.33333333333331">Provider</th><th>Models</th><th>Functions</th></tr></thead><tbody><tr><td><a href="../../../integrations/llms/openai/">OpenAI</a></td><td><code>whisper-1</code></td><td>Transcription<br>Translation</td></tr><tr><td><a href="../../../integrations/llms/azure-openai.md">Azure OpenAI</a></td><td><code>whisper-1</code></td><td>Transcription<br>Translation</td></tr></tbody></table>

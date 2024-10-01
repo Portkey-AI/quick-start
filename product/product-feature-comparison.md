@@ -1,8 +1,8 @@
-# Product Feature Comparison
+# Portkey Pro & Enterprise Plans
 
 Portkey processes **billions** of tokens everyday for our customers worldwide. All these requests are routed through our AI Gateway. We've [open sourced this core AI Gateway](https://portkey.sh/gateway) that we use internally, to the community.
 
-While Portkey itself has a generous free tier (10k requests free / month), if you are considering using the open source Gateway in your projects instead, here's a handy guide illustrating the key differences between [Portkey's hosted app](https://app.portkey.ai/) and the open source [Gateway](https://github.com/Portkey-AI/gateway) that powers it:
+While Portkey's hosted app itself has a generous free tier (10k requests free / month), as you move to production-scale, you may benefit from Portkey Pro or Enterprise plans. Here's a handy guide illustrating the key differences between [Portkey's hosted app](https://app.portkey.ai/) and the open source [Gateway](https://github.com/Portkey-AI/gateway) that powers it:
 
 ***
 

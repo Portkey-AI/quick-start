@@ -25,6 +25,7 @@
   * [Cohere](integrations/llms/cohere.md)
   * [Fireworks](integrations/llms/fireworks.md)
   * [Deepbricks](integrations/llms/deepbricks.md)
+  * [Deepgram](integrations/llms/deepgram.md)
   * [Deepinfra](integrations/llms/deepinfra.md)
   * [Deepseek](integrations/llms/deepseek.md)
   * [Google Palm](integrations/llms/google-palm.md)
@@ -90,7 +91,7 @@
     * [Function Calling](product/ai-gateway/multimodal-capabilities/function-calling.md)
     * [Vision](product/ai-gateway/multimodal-capabilities/vision.md)
     * [Speech-to-Text](product/ai-gateway/multimodal-capabilities/vision-1.md)
-    * [Text-to-Speech](product/ai-gateway/multimodal-capabilities/vision-2.md)
+    * [Text-to-Speech](product/ai-gateway/multimodal-capabilities/text-to-speech.md)
   * [Cache (Simple & Semantic)](product/ai-gateway/cache-simple-and-semantic.md)
   * [Fallbacks](product/ai-gateway/fallbacks.md)
   * [Automatic Retries](product/ai-gateway/automatic-retries.md)
@@ -134,7 +135,7 @@
     * [Log Store](product/enterprise-offering/components/log-store/README.md)
       * [MongoDB](product/enterprise-offering/components/log-store/mongodb.md)
 * [Open Source](open-source.md)
-* [Product Feature Comparison](product/product-feature-comparison.md)
+* [Portkey Pro & Enterprise Plans](product/product-feature-comparison.md)
 
 ## API Reference
 

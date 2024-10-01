@@ -1,6 +1,6 @@
 # AI Gateway
 
-Portkey provides the world's fastest multimodal AI gateway that enables working with multiple LLM providers as well as different modalities very easy. The gateway providers features to improve your app's reliability, cost efficiency and accuracy.
+Portkey providers the world's fastest multimodal AI gateway. Seamlessly integrate multiple LLM providers and modalities while enhancing your app's reliability, cost-efficiency, and accuracy.
 
 ### **Features**
 
