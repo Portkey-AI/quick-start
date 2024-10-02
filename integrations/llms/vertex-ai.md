@@ -268,7 +268,7 @@ async function getEmbeddings() {
     const embeddings = await portkey.embeddings.create({
         input: "embed this",
 <strong>        model: "text-multilingual-embedding-002",
-</strong>    });
+</strong>    }, {authorization: "vertex ai access token here"});
 
     console.log(embeddings);
 }
@@ -287,7 +287,7 @@ portkey = Portkey(
 
 # Generate embeddings
 def get_embeddings():
-    embeddings = portkey.embeddings.create(
+    embeddings = portkey.with_options(authorization="...").embeddings.create(
         input='The vector representation for this text',
 <strong>        model='text-embedding-004'
 </strong>    )
