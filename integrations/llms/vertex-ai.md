@@ -1,8 +1,8 @@
 # Google Vertex AI
 
-Portkey provides a robust and secure gateway to facilitate the integration of various Large Language Models (LLMs) into your applications, including [Google Vertex AI](https://cloud.google.com/vertex-ai?hl=en).
+Portkey provides a robust and secure gateway to facilitate the integration of various Large Language Models (LLMs), and embedding models into your apps, including [Google Vertex AI](https://cloud.google.com/vertex-ai?hl=en).
 
-With Portkey, you can take advantage of features like fast AI gateway access, observability, prompt management, and more, all while ensuring the secure management of your LLM API keys through a [virtual key](../../product/ai-gateway/virtual-keys/) system.
+With Portkey, you can take advantage of features like fast AI gateway access, observability, prompt management, and more, all while ensuring the secure management of your Vertex auth through a [virtual key](../../product/ai-gateway/virtual-keys/) system.
 
 {% hint style="info" %}
 Provider Slug**: **<mark style="color:blue;">**`vertex-ai`**</mark>
@@ -123,8 +123,6 @@ main();
 ```
 {% endtab %}
 {% endtabs %}
-
-***
 
 ## Document, Video, Audio Processing
 
@@ -250,6 +248,55 @@ Here, you can send the `base64` image data along with the `url` field too:&#x20;
 ```
 
 ***
+
+## Text Embedding Models
+
+You can use any of Vertex AI's `English` and `Multilingual` models through Portkey, in the familar OpenAI-schema:
+
+{% tabs %}
+{% tab title="NodeJS" %}
+<pre class="language-javascript"><code class="lang-javascript">import Portkey from 'portkey-ai';
+
+// Initialize the Portkey client
+const portkey = new Portkey({
+    apiKey: "PORTKEY_API_KEY",  // Replace with your Portkey API key
+    virtualKey: "VERTEX_VIRTUAL_KEY"   // Optional: For virtual key management
+});
+
+// Generate embeddings
+async function getEmbeddings() {
+    const embeddings = await portkey.embeddings.create({
+        input: "embed this",
+<strong>        model: "text-multilingual-embedding-002",
+</strong>    });
+
+    console.log(embeddings);
+}
+await getEmbeddings();
+</code></pre>
+{% endtab %}
+
+{% tab title="Python" %}
+<pre class="language-python"><code class="lang-python">from portkey_ai import Portkey
+
+# Initialize the Portkey client
+portkey = Portkey(
+    api_key="PORTKEY_API_KEY",  # Replace with your Portkey API key
+    virtual_key="VERTEX_VIRTUAL_KEY"
+)
+
+# Generate embeddings
+def get_embeddings():
+    embeddings = portkey.embeddings.create(
+        input='The vector representation for this text',
+<strong>        model='text-embedding-004'
+</strong>    )
+    print(embeddings)
+
+get_embeddings()
+</code></pre>
+{% endtab %}
+{% endtabs %}
 
 ## Function Calling
 
