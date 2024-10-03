@@ -251,16 +251,19 @@ Here, you can send the `base64` image data along with the `url` field too:&#x20;
 
 ## Text Embedding Models
 
-You can use any of Vertex AI's `English` and `Multilingual` models through Portkey, in the familar OpenAI-schema:
+You can use any of Vertex AI's `English` and `Multilingual` models through Portkey, in the familar OpenAI-schema.
+
+{% hint style="info" %}
+The Gemini-specific parameter <mark style="color:green;">**`task_type`**</mark> is also supported on Portkey.
+{% endhint %}
 
 {% tabs %}
 {% tab title="NodeJS" %}
 <pre class="language-javascript"><code class="lang-javascript">import Portkey from 'portkey-ai';
 
-// Initialize the Portkey client
 const portkey = new Portkey({
-    apiKey: "PORTKEY_API_KEY",  // Replace with your Portkey API key
-    virtualKey: "VERTEX_VIRTUAL_KEY"   // Optional: For virtual key management
+    apiKey: "PORTKEY_API_KEY",
+    virtualKey: "VERTEX_VIRTUAL_KEY"
 });
 
 // Generate embeddings
@@ -268,6 +271,8 @@ async function getEmbeddings() {
     const embeddings = await portkey.embeddings.create({
         input: "embed this",
 <strong>        model: "text-multilingual-embedding-002",
+</strong>        // @ts-ignore (if using typescript)
+<strong>        task_type: "CLASSIFICATION", // Optional
 </strong>    }, {authorization: "vertex ai access token here"});
 
     console.log(embeddings);
@@ -289,11 +294,27 @@ portkey = Portkey(
 def get_embeddings():
     embeddings = portkey.with_options(authorization="...").embeddings.create(
         input='The vector representation for this text',
-<strong>        model='text-embedding-004'
+<strong>        model='text-embedding-004',
+</strong><strong>        task_type="CLASSIFICATION" # Optional
 </strong>    )
     print(embeddings)
 
 get_embeddings()
+</code></pre>
+{% endtab %}
+
+{% tab title="REST API" %}
+<pre class="language-sh"><code class="lang-sh">curl 'https://api.portkey.ai/v1/embeddings' \
+    -H 'Content-Type: application/json' \
+    -H 'x-portkey-api-key: PORTKEY_API_KEY' \
+<strong>    -H 'x-portkey-provider: vertex-ai' \
+</strong><strong>    -H 'Authorization: Bearer VERTEX_AI_ACCESS_TOKEN' \
+</strong><strong>    -H 'x-portkey-virtual-key: $VERTEX_VIRTUAL_KEY' \
+</strong>    --data-raw '{
+<strong>        "model": "textembedding-004",
+</strong><strong>        "input": "A HTTP 246 code is used to signify an AI response containing hallucinations or other inaccuracies",
+</strong><strong>        "task_type": "CLASSIFICATION"
+</strong>    }'
 </code></pre>
 {% endtab %}
 {% endtabs %}
