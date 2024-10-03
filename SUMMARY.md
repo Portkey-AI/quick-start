@@ -69,6 +69,7 @@
   * [Langchain (Python)](integrations/libraries/langchain-python.md)
   * [Langchain (JS/TS)](integrations/libraries/langchain-js.md)
   * [LlamaIndex (Python)](integrations/libraries/llama-index-python.md)
+  * [LibreChat](integrations/libraries/librechat.md)
   * [Promptfoo](integrations/libraries/promptfoo.md)
   * [Vercel](integrations/libraries/vercel/README.md)
     * [Vercel \[Depricated\]](integrations/libraries/vercel/vercel.md)
