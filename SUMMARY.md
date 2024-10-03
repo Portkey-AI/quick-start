@@ -11,6 +11,7 @@
 * [LLMs](integrations/llms/README.md)
   * [OpenAI](integrations/llms/openai/README.md)
     * [Structured Outputs](integrations/llms/openai/structured-outputs.md)
+    * [Prompt Caching](integrations/llms/openai/prompt-caching.md)
   * [Anthropic](integrations/llms/anthropic/README.md)
     * [Prompt Caching](integrations/llms/anthropic/prompt-caching.md)
   * [Google Gemini](integrations/llms/gemini.md)
