@@ -40,7 +40,7 @@ Edit your existing `.env` file at the project root (if the file does not exist, 
 {% tab title=".env" %}
 ```
 PORTKEY_API_KEY=YOUR_PORTKEY_API_KEY
-PORTKEY_BASE_URL=https://api.portkey.ai/v1
+PORTKEY_GATEWAY_URL=https://api.portkey.ai/v1
 ```
 {% endtab %}
 {% endtabs %}
@@ -49,6 +49,10 @@ PORTKEY_BASE_URL=https://api.portkey.ai/v1
 
 Here, you can either pass your **Config** (containing provider/model configurations) or direct provider **Virtual key** saved on Portkey.
 
+{% hint style="info" %}
+LibreChat requires that the API key field is present. Since we don't need it for the Portkey integration, we can pass a dummy string for it.
+{% endhint %}
+
 {% tabs %}
 {% tab title="librechat.yaml with Portkey Virtual Key " %}
 <pre class="language-yaml"><code class="lang-yaml">version: 1.1.4
@@ -56,7 +60,8 @@ cache: true
 endpoints:
   custom:
     - name: "Portkey"
-<strong>      baseURL: ${PORTKEY_GATEWAY_URL}
+<strong>      apiKey: "dummy"
+</strong><strong>      baseURL: ${PORTKEY_GATEWAY_URL}
 </strong>      headers:
 <strong>        x-portkey-api-key: "${PORTKEY_API_KEY}"
 </strong><strong>        x-portkey-virtual-key: "PORTKEY_OPENAI_VIRTUAL_KEY"
